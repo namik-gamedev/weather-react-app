@@ -4,9 +4,16 @@ import styles from './WeatherInfo.module.css'
 const WeatherInfo = ({ data }) => {
    return (
       <div className={styles.content}>
-         <h2>{data.name}</h2>
+         <h2>
+            {data.name} <img
+               className={styles.countryFlag}
+               src={`https://flagcdn.com/w40/${data.sys.country.toLowerCase()}.png`}
+               title={data.sys.country}
+               alt={data.sys.country} />
+         </h2>
+
          <img
-            src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+            src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`}
             alt=""
             className={styles.img}
          />
