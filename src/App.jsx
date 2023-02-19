@@ -5,6 +5,7 @@ import NotFound from './components/notFound/NotFound';
 import SearchForm from './components/searchForm/SearchForm';
 import WeatherInfo from './components/weatherInfo/WeatherInfo';
 import DataFetching from './tools/DataFetching';
+import WeatherService from './API/WeatherService';
 
 function App() {
   const [isLoading, setIsLoading] = useState(false)
