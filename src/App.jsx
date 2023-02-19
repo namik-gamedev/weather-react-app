@@ -4,7 +4,7 @@ import Loader from './components/loader/Loader';
 import NotFound from './components/notFound/NotFound';
 import SearchForm from './components/searchForm/SearchForm';
 import WeatherInfo from './components/weatherInfo/WeatherInfo';
-import WeatherService from './API/WeatherService';
+import DataFetching from './tools/DataFetching';
 
 function App() {
   const [isLoading, setIsLoading] = useState(false)
@@ -19,14 +19,11 @@ function App() {
 
     setIsLoading(true)
 
-    const data = await WeatherService.getData(location)
+    const response = await WeatherService.getAll(location)
+    const [data, notFound, isNight] = DataFetching.fetchData(response)
     setWeatherData(data)
-    if (data.cod === '404') {
-      setDataNotFound(true)
-    } else {
-      setDataNotFound(false)
-      setIsNight(data.weather[0].icon.endsWith('n') ? true : false)
-    }
+    setDataNotFound(notFound)
+    setIsNight(isNight)
 
     setIsLoading(false)
   }
