@@ -26,6 +26,8 @@ h2 {
 
   background: white;
   color: var(--text-color);
+
+  transition: all 0.3s linear;
 }
 
 .night {
@@ -39,7 +41,6 @@ h2 {
   width: 600px;
   max-width: 600px;
   padding: 50px;
-  transition: all 0.2s linear;
 }
 
 .icon {
