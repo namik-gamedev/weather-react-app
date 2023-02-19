@@ -21,7 +21,7 @@ function App() {
     setIsLoading(true)
 
     const response = await WeatherService.getAll(location)
-    const [data, notFound, isNight] = DataFetching.fetchData(response)
+    const [data, notFound, isNight] = await DataFetching.fetchData(response)
     setWeatherData(data)
     setDataNotFound(notFound)
     setIsNight(isNight)
