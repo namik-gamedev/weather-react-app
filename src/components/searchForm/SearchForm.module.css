@@ -1,0 +1,30 @@
+.form {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+   margin-bottom: 60px;
+}
+
+.input {
+   background: transparent;
+   text-transform: uppercase;
+   color: var(--text-color);
+   caret-color: var(--sub-color);
+   font-weight: 500;
+}
+
+.input::placeholder {
+   font-weight: normal;
+   text-transform: capitalize;
+   color: var(--sub-color);
+}
+
+.btn {
+   padding: 10px;
+   border-radius: 50%;
+   background: transparent;
+   color: var(--text-color);
+
+   cursor: pointer;
+}

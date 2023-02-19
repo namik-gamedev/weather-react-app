@@ -1,0 +1,23 @@
+.loader {
+   margin: 120px auto;
+
+   width: 80px;
+   height: 80px;
+
+   border-radius: 50%;
+
+   border: 6px solid;
+   border-color: var(--text-color) transparent var(--text-color) transparent;
+
+   animation: loader-anim 0.8s ease infinite;
+}
+
+@keyframes loader-anim {
+   0% {
+      transform: rotate(0deg);
+   }
+
+   100% {
+      transform: rotate(360deg);
+   }
+}
