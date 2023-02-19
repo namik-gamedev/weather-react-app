@@ -27,4 +27,10 @@
    color: var(--text-color);
 
    cursor: pointer;
+
+   transition: color 0.2s linear;
+}
+
+.btn:hover {
+   color: var(--sub-color);
 }
