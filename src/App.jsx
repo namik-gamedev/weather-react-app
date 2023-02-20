@@ -14,10 +14,8 @@ function App() {
    const [isNight, setIsNight] = useState(false)
 
    useEffect(() => {
-      const data = JSON.parse(localStorage.getItem('weatherData'))
-      if (data) {
-         setWeatherData()
-      }
+      const location = JSON.parse(localStorage.getItem('location'))
+      if (location) fetchData(location)
    }, [])
 
    async function fetchData(location) {
@@ -29,14 +27,15 @@ function App() {
 
       const response = await WeatherService.getAll(location)
       const [data, notFound, isNight] = await DataFetching.fetchData(response)
-      if (data.cod === 200) {
-         localStorage.setItem('weatherData', JSON.stringify(data))
-      }
       setWeatherData(data)
       setDataNotFound(notFound)
       setIsNight(isNight)
 
       setIsLoading(false)
+
+      if (!notFound) {
+         localStorage.setItem('location', JSON.stringify(location))
+      }
    }
 
    return (
