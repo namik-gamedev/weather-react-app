@@ -1,11 +1,10 @@
-import React, { useMemo, useState, useEffect } from 'react';
-import './App.css';
-import Loader from './components/loader/Loader';
-import NotFound from './components/notFound/NotFound';
-import SearchForm from './components/searchForm/SearchForm';
-import WeatherInfo from './components/weatherInfo/WeatherInfo';
-import DataFetching from './tools/DataFetching';
-import WeatherService from './API/WeatherService';
+import React, { useMemo, useState, useEffect } from "react"
+import "./App.css"
+import Loader from "./components/loader/Loader"
+import SearchForm from "./components/searchForm/SearchForm"
+import DataFetching from "./tools/DataFetching"
+import WeatherService from "./API/WeatherService"
+import WeatherOutput from "./components/WeatherOutput"
 
 function App() {
    const [isLoading, setIsLoading] = useState(false)
@@ -14,12 +13,12 @@ function App() {
    const [isNight, setIsNight] = useState(false)
 
    useEffect(() => {
-      const location = JSON.parse(localStorage.getItem('location'))
+      const location = JSON.parse(localStorage.getItem("location"))
       if (location) fetchData(location)
    }, [])
 
    async function fetchData(location) {
-      if (location === '') {
+      if (location === "") {
          return
       }
 
@@ -34,24 +33,24 @@ function App() {
       setIsLoading(false)
 
       if (!notFound) {
-         localStorage.setItem('location', JSON.stringify(location))
+         localStorage.setItem("location", JSON.stringify(location))
       }
    }
 
    return (
-      <div className={isNight ? 'App night' : 'App'}>
-         <div className="container">
+      <div className={isNight ? "App night" : "App"}>
+         <div className='container'>
             <SearchForm fetchData={fetchData} />
-            {isLoading
-               ? < Loader />
-               : Object.keys(weatherData).length > 0 &&
-               (dataNotFound
-                  ? <NotFound /> :
-                  < WeatherInfo data={weatherData} />)
-            }
+            {isLoading ? (
+               <Loader />
+            ) : (
+               Object.keys(weatherData).length > 0 && (
+                  <WeatherOutput data={weatherData} notFound={dataNotFound} />
+               )
+            )}
          </div>
       </div>
-   );
+   )
 }
 
-export default App;
+export default App
