@@ -1,10 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import 'font-awesome/css/font-awesome.min.css';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import 'font-awesome/css/font-awesome.min.css'
+import { QueryClientProvider, QueryClient } from 'react-query'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'))
+const queryClient = new QueryClient()
+
 root.render(
-   <App />
-);
-
+   <QueryClientProvider client={queryClient}>
+      <App />
+   </QueryClientProvider>
+)

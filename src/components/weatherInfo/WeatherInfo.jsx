@@ -1,16 +1,21 @@
-import React from "react"
-import styles from "./WeatherInfo.module.css"
+import React from 'react'
+import styles from './WeatherInfo.module.css'
 
 const WeatherInfo = ({ data }) => {
    return (
       <div className={styles.content}>
          <h2>
-            {data.name}{" "}
+            {data.name}{' '}
             <img
                className={styles.countryFlag}
-               src={`https://flagcdn.com/w40/${data.sys.country.toLowerCase()}.png`}
-               title={new Intl.DisplayNames(["ru"], { type: "region" }).of(data.sys.country)}
-               alt={data.sys.country}
+               src={`https://flagcdn.com/w40/${
+                  data.sys.country && data.sys.country.toLowerCase()
+               }.png`}
+               title={
+                  data.sys.country &&
+                  new Intl.DisplayNames(['ru'], { type: 'region' }).of(data.sys.country)
+               }
+               alt={data.sys.country && data.sys.country}
             />
          </h2>
 
@@ -20,7 +25,9 @@ const WeatherInfo = ({ data }) => {
             className={styles.img}
          />
          <div className={styles.temp}>{data.main.temp.toFixed(1)} °C</div>
-         <div className={styles.feelsLike}>{`Ощущается как ${data.main.feels_like.toFixed(1)} °C`}</div>
+         <div className={styles.feelsLike}>{`Ощущается как ${data.main.feels_like.toFixed(
+            1
+         )} °C`}</div>
          <div className={styles.weather}>{data.weather[0].description}</div>
          <div className={styles.bottomContent}>
             <div>
