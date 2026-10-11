@@ -8,7 +8,7 @@ import WeatherOutput from "./components/WeatherOutput"
 
 function App() {
    const [isLoading, setIsLoading] = useState(false)
-   const [dataNotFound, setDataNotFound] = useState(false)
+   const [isError, setIsError] = useState(false)
    const [weatherData, setWeatherData] = useState({})
    const [isNight, setIsNight] = useState(false)
 
@@ -25,14 +25,14 @@ function App() {
       setIsLoading(true)
 
       const response = await WeatherService.getAll(location)
-      const [data, notFound, isNight] = await DataFetching.fetchData(response)
+      const [data, isError, isNight] = await DataFetching.fetchData(response)
       setWeatherData(data)
-      setDataNotFound(notFound)
+      setIsError(isError)
       setIsNight(isNight)
 
       setIsLoading(false)
 
-      if (!notFound) {
+      if (!isError) {
          localStorage.setItem("location", JSON.stringify(location))
       }
    }
@@ -45,7 +45,7 @@ function App() {
                <Loader />
             ) : (
                Object.keys(weatherData).length > 0 && (
-                  <WeatherOutput data={weatherData} notFound={dataNotFound} />
+                  <WeatherOutput data={weatherData} error={isError} />
                )
             )}
          </div>
