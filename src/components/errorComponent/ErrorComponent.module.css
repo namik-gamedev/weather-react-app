@@ -7,6 +7,6 @@
 
 .content h2 {
    margin-bottom: 20px;
-   font-size: clamp(42px, 15vw, 72px);
+   font-size: clamp(20px, 6vw, 45px);
    font-weight: bold;
 }
