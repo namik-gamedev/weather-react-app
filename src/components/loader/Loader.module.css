@@ -12,6 +12,15 @@
    animation: loader-anim 0.8s ease infinite;
 }
 
+@media (max-width: 600px) {
+   .loader {
+      margin: 60px auto;
+      width: 56px;
+      height: 56px;
+      border-width: 5px;
+   }
+}
+
 @keyframes loader-anim {
    0% {
       transform: rotate(0deg);
