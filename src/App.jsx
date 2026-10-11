@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import "./App.css"
 import Loader from "./components/loader/Loader"
 import SearchForm from "./components/searchForm/SearchForm"
